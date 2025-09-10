@@ -3,10 +3,11 @@ import json
 import schedule
 import time
 import threading
+import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-BOT_TOKEN = "8382132782:AAEUK3WKhF7HzNlvOLVhl51O500JEE5u8Lg"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 WATCHLIST_FILE = "watchlist.json"
 CHECK_INTERVAL = 20  # minutes
 
@@ -150,3 +151,4 @@ threading.Thread(target=run_scheduler, args=(app,), daemon=True).start()
 
 if __name__ == "__main__":
     app.run_polling()
+
