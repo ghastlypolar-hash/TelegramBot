@@ -124,12 +124,10 @@ async def register_chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if chat_id not in context.application.bot_data["chat_ids"]:
         context.application.bot_data["chat_ids"].append(chat_id)
 
-
 def run_scheduler(application):
     while True:
         schedule.run_pending()
         time.sleep(1)
-
 
 # Main
 app = ApplicationBuilder().token(BOT_TOKEN).build()
@@ -151,4 +149,5 @@ threading.Thread(target=run_scheduler, args=(app,), daemon=True).start()
 
 if __name__ == "__main__":
     app.run_polling()
+
 
