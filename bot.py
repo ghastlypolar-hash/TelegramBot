@@ -147,7 +147,15 @@ schedule.every(CHECK_INTERVAL).minutes.do(
 # Run scheduler in separate thread
 threading.Thread(target=run_scheduler, args=(app,), daemon=True).start()
 
+#if __name__ == "__main__":
+#    app.run_polling()
 if __name__ == "__main__":
-    app.run_polling()
+    from telegram.ext import Application
+    import asyncio
+
+    async def main():
+        await app.bot.set_webhook("https://your-app.onrender.com/webhook")
+    asyncio.run(main())
+
 
 
